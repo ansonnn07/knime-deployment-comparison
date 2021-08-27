@@ -1,0 +1,5 @@
+,Training accuracy,Validation accuracy,Correct classified,Wrong classified,Error
+Adadelta Python,97.1,95.0,1425,75,5.0
+Adadelta KNIME,99.5,93.867,1408,92,6.133
+Adam Python,99.41,96.33333333333334,1445,55,3.666666666666657
+Adam KNIME,99.5,96.533,1448,52,3.467
