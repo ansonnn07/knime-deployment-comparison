@@ -1,0 +1,4 @@
+,Testing accuracy,Correct classified,Wrong classified,Error
+Python - Decision Tree,93.7031484257871,625,42,6.296851574212894
+KNIME - Loaded in Python,92.50374812593704,617,50,7.496251874062963
+KNIME - Original,92.954,620,47,7.046

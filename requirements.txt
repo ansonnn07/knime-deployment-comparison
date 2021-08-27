@@ -1,0 +1,7 @@
+openpyxl
+pandas
+numpy
+seaborn
+scikit-learn
+sklearn2pmml
+tensorflow

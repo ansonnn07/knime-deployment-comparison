@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_4" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.4">
+	<Header>
+		<Application name="JPMML-SkLearn" version="1.6.18"/>
+		<Timestamp>2021-08-27T11:11:58Z</Timestamp>
+	</Header>
+	<MiningBuildTask>
+		<Extension>PMMLPipeline(steps=[('classifier', DecisionTreeClassifier(min_samples_leaf=6, random_state=42))])</Extension>
+	</MiningBuildTask>
+	<DataDictionary>
+		<DataField name="Churn" optype="categorical" dataType="integer">
+			<Value value="0"/>
+			<Value value="1"/>
+		</DataField>
+		<DataField name="VMail Message" optype="continuous" dataType="float"/>
+		<DataField name="Day Mins" optype="continuous" dataType="float"/>
+		<DataField name="Eve Mins" optype="continuous" dataType="float"/>
+		<DataField name="Night Mins" optype="continuous" dataType="float"/>
+		<DataField name="Intl Mins" optype="continuous" dataType="float"/>
+		<DataField name="CustServ Calls" optype="continuous" dataType="float"/>
+		<DataField name="Day Calls" optype="continuous" dataType="float"/>
+		<DataField name="Day Charge" optype="continuous" dataType="float"/>
+		<DataField name="Eve Calls" optype="continuous" dataType="float"/>
+		<DataField name="Eve Charge" optype="continuous" dataType="float"/>
+		<DataField name="Night Calls" optype="continuous" dataType="float"/>
+		<DataField name="Night Charge" optype="continuous" dataType="float"/>
+		<DataField name="Intl Calls" optype="continuous" dataType="float"/>
+		<DataField name="Intl Charge" optype="continuous" dataType="float"/>
+		<DataField name="Account Length" optype="continuous" dataType="float"/>
+		<DataField name="Int'l Plan" optype="continuous" dataType="float"/>
+		<DataField name="VMail Plan" optype="continuous" dataType="float"/>
+	</DataDictionary>
+	<TransformationDictionary/>
+	<TreeModel functionName="classification" algorithmName="sklearn.tree._classes.DecisionTreeClassifier" missingValueStrategy="nullPrediction">
+		<MiningSchema>
+			<MiningField name="Churn" usageType="target"/>
+			<MiningField name="Day Mins"/>
+			<MiningField name="CustServ Calls"/>
+			<MiningField name="Int'l Plan"/>
+			<MiningField name="Eve Mins"/>
+			<MiningField name="Day Charge"/>
+			<MiningField name="VMail Message"/>
+			<MiningField name="Account Length"/>
+			<MiningField name="Night Charge"/>
+			<MiningField name="Night Calls"/>
+			<MiningField name="Intl Calls"/>
+			<MiningField name="Day Calls"/>
+			<MiningField name="Night Mins"/>
+			<MiningField name="Eve Calls"/>
+			<MiningField name="Eve Charge"/>
+			<MiningField name="Intl Mins"/>
+			<MiningField name="Intl Charge"/>
+			<MiningField name="VMail Plan"/>
+		</MiningSchema>
+		<Output>
+			<OutputField name="probability(0)" optype="continuous" dataType="double" feature="probability" value="0"/>
+			<OutputField name="probability(1)" optype="continuous" dataType="double" feature="probability" value="1"/>
+		</Output>
+		<LocalTransformations>
+			<DerivedField name="double(Day Mins)" optype="continuous" dataType="double">
+				<FieldRef field="Day Mins"/>
+			</DerivedField>
+			<DerivedField name="double(CustServ Calls)" optype="continuous" dataType="double">
+				<FieldRef field="CustServ Calls"/>
+			</DerivedField>
+			<DerivedField name="double(Int'l Plan)" optype="continuous" dataType="double">
+				<FieldRef field="Int'l Plan"/>
+			</DerivedField>
+			<DerivedField name="double(Eve Mins)" optype="continuous" dataType="double">
+				<FieldRef field="Eve Mins"/>
+			</DerivedField>
+			<DerivedField name="double(Day Charge)" optype="continuous" dataType="double">
+				<FieldRef field="Day Charge"/>
+			</DerivedField>
+			<DerivedField name="double(VMail Message)" optype="continuous" dataType="double">
+				<FieldRef field="VMail Message"/>
+			</DerivedField>
+			<DerivedField name="double(Account Length)" optype="continuous" dataType="double">
+				<FieldRef field="Account Length"/>
+			</DerivedField>
+			<DerivedField name="double(Night Charge)" optype="continuous" dataType="double">
+				<FieldRef field="Night Charge"/>
+			</DerivedField>
+			<DerivedField name="double(Night Calls)" optype="continuous" dataType="double">
+				<FieldRef field="Night Calls"/>
+			</DerivedField>
+			<DerivedField name="double(Intl Calls)" optype="continuous" dataType="double">
+				<FieldRef field="Intl Calls"/>
+			</DerivedField>
+			<DerivedField name="double(Day Calls)" optype="continuous" dataType="double">
+				<FieldRef field="Day Calls"/>
+			</DerivedField>
+			<DerivedField name="double(Night Mins)" optype="continuous" dataType="double">
+				<FieldRef field="Night Mins"/>
+			</DerivedField>
+			<DerivedField name="double(Eve Calls)" optype="continuous" dataType="double">
+				<FieldRef field="Eve Calls"/>
+			</DerivedField>
+			<DerivedField name="double(Eve Charge)" optype="continuous" dataType="double">
+				<FieldRef field="Eve Charge"/>
+			</DerivedField>
+			<DerivedField name="double(Intl Mins)" optype="continuous" dataType="double">
+				<FieldRef field="Intl Mins"/>
+			</DerivedField>
+			<DerivedField name="double(Intl Charge)" optype="continuous" dataType="double">
+				<FieldRef field="Intl Charge"/>
+			</DerivedField>
+			<DerivedField name="double(VMail Plan)" optype="continuous" dataType="double">
+				<FieldRef field="VMail Plan"/>
+			</DerivedField>
+		</LocalTransformations>
+		<Node>
+			<True/>
+			<Node>
+				<SimplePredicate field="double(Day Mins)" operator="lessOrEqual" value="264.4499969482422"/>
+				<Node>
+					<SimplePredicate field="double(CustServ Calls)" operator="lessOrEqual" value="3.5"/>
+					<Node>
+						<SimplePredicate field="double(Int'l Plan)" operator="lessOrEqual" value="0.5"/>
+						<Node>
+							<SimplePredicate field="double(Day Mins)" operator="lessOrEqual" value="224.5999984741211"/>
+							<Node>
+								<SimplePredicate field="double(Eve Mins)" operator="lessOrEqual" value="329.25"/>
+								<Node>
+									<SimplePredicate field="double(Day Charge)" operator="lessOrEqual" value="35.795000076293945"/>
+									<Node>
+										<SimplePredicate field="double(VMail Message)" operator="lessOrEqual" value="43.5"/>
+										<Node>
+											<SimplePredicate field="double(Account Length)" operator="lessOrEqual" value="216.0"/>
+											<Node>
+												<SimplePredicate field="double(Night Charge)" operator="lessOrEqual" value="15.75"/>
+												<Node>
+													<SimplePredicate field="double(Night Calls)" operator="lessOrEqual" value="104.5"/>
+													<Node>
+														<SimplePredicate field="double(Intl Calls)" operator="lessOrEqual" value="13.5"/>
+														<Node>
+															<SimplePredicate field="double(Day Calls)" operator="lessOrEqual" value="128.5"/>
+															<Node>
+																<SimplePredicate field="double(Night Mins)" operator="lessOrEqual" value="255.75"/>
+																<Node>
+																	<SimplePredicate field="double(Night Calls)" operator="lessOrEqual" value="69.5"/>
+																	<Node>
+																		<SimplePredicate field="double(Eve Mins)" operator="lessOrEqual" value="169.3499984741211"/>
+																		<Node score="0" recordCount="9">
+																			<SimplePredicate field="double(Day Charge)" operator="lessOrEqual" value="25.414999961853027"/>
+																			<ScoreDistribution value="0" recordCount="7"/>
+																			<ScoreDistribution value="1" recordCount="2"/>
+																		</Node>
+																		<Node score="0" recordCount="9">
+																			<True/>
+																			<ScoreDistribution value="0" recordCount="9"/>
+																			<ScoreDistribution value="1" recordCount="0"/>
+																		</Node>
+																	</Node>
+																	<Node score="0" recordCount="58">
+																		<True/>
+																		<ScoreDistribution value="0" recordCount="58"/>
+																		<ScoreDistribution value="1" recordCount="0"/>
+																	</Node>
+																</Node>
+																<Node>
+																	<SimplePredicate field="double(Day Calls)" operator="lessOrEqual" value="119.5"/>
+																	<Node score="0" recordCount="483">
+																		<SimplePredicate field="double(VMail Message)" operator="lessOrEqual" value="26.5"/>
+																		<ScoreDistribution value="0" recordCount="483"/>
+																		<ScoreDistribution value="1" recordCount="0"/>
+																	</Node>
+																	<Node score="0" recordCount="11">
+																		<SimplePredicate field="double(VMail Message)" operator="lessOrEqual" value="28.5"/>
+																		<ScoreDistribution value="0" recordCount="10"/>
+																		<ScoreDistribution value="1" recordCount="1"/>
+																	</Node>
+																	<Node score="0" recordCount="84">
+																		<True/>
+																		<ScoreDistribution value="0" recordCount="84"/>
+																		<ScoreDistribution value="1" recordCount="0"/>
+																	</Node>
+																</Node>
+																<Node score="0" recordCount="7">
+																	<SimplePredicate field="double(Day Calls)" operator="lessOrEqual" value="120.5"/>
+																	<ScoreDistribution value="0" recordCount="6"/>
+																	<ScoreDistribution value="1" recordCount="1"/>
+																</Node>
+																<Node score="0" recordCount="51">
+																	<True/>
+																	<ScoreDistribution value="0" recordCount="51"/>
+																	<ScoreDistribution value="1" recordCount="0"/>
+																</Node>
+															</Node>
+															<Node>
+																<SimplePredicate field="double(Account Length)" operator="lessOrEqual" value="62.5"/>
+																<Node score="0" recordCount="13">
+																	<SimplePredicate field="double(Account Length)" operator="lessOrEqual" value="54.0"/>
+																	<ScoreDistribution value="0" recordCount="13"/>
+																	<ScoreDistribution value="1" recordCount="0"/>
+																</Node>
+																<Node score="0" recordCount="6">
+																	<True/>
+																	<ScoreDistribution value="0" recordCount="4"/>
+																	<ScoreDistribution value="1" recordCount="2"/>
+																</Node>
+															</Node>
+															<Node score="0" recordCount="7">
+																<SimplePredicate field="double(Night Charge)" operator="lessOrEqual" value="11.559999942779541"/>
+																<ScoreDistribution value="0" recordCount="6"/>
+																<ScoreDistribution value="1" recordCount="1"/>
+															</Node>
+															<Node score="0" recordCount="93">
+																<True/>
+																<ScoreDistribution value="0" recordCount="93"/>
+																<ScoreDistribution value="1" recordCount="0"/>
+															</Node>
+														</Node>
+														<Node>
+															<SimplePredicate field="double(Day Charge)" operator="lessOrEqual" value="30.429999351501465"/>
+															<Node score="0" recordCount="7">
+																<SimplePredicate field="double(Day Calls)" operator="lessOrEqual" value="129.5"/>
+																<ScoreDistribution value="0" recordCount="6"/>
+																<ScoreDistribution value="1" recordCount="1"/>
+															</Node>
+															<Node score="0" recordCount="49">
+																<True/>
+																<ScoreDistribution value="0" recordCount="49"/>
+																<ScoreDistribution value="1" recordCount="0"/>
+															</Node>
+														</Node>
+														<Node score="0" recordCount="6">
+															<SimplePredicate field="double(Night Charge)" operator="lessOrEqual" value="8.139999866485596"/>
+															<ScoreDistribution value="0" recordCount="6"/>
+															<ScoreDistribution value="1" recordCount="0"/>
+														</Node>
+														<Node score="0" recordCount="10">
+															<True/>
+															<ScoreDistribution value="0" recordCount="7"/>
+															<ScoreDistribution value="1" recordCount="3"/>
+														</Node>
+													</Node>
+													<Node score="0" recordCount="6">
+														<True/>
+														<ScoreDistribution value="0" recordCount="5"/>
+														<ScoreDistribution value="1" recordCount="1"/>
+													</Node>
+												</Node>
+												<Node>
+													<SimplePredicate field="double(Account Length)" operator="lessOrEqual" value="152.5"/>
+													<Node>
+														<SimplePredicate field="double(Day Charge)" operator="lessOrEqual" value="21.889999389648438"/>
+														<Node>
+															<SimplePredicate field="double(Eve Calls)" operator="lessOrEqual" value="125.5"/>
+															<Node>
+																<SimplePredicate field="double(VMail Message)" operator="lessOrEqual" value="31.5"/>
+																<Node score="0" recordCount="76">
+																	<SimplePredicate field="double(Day Charge)" operator="lessOrEqual" value="19.219999313354492"/>
+																	<ScoreDistribution value="0" recordCount="76"/>
+																	<ScoreDistribution value="1" recordCount="0"/>
+																</Node>
+																<Node score="0" recordCount="8">
+																	<SimplePredicate field="double(Day Charge)" operator="lessOrEqual" value="20.035000801086426"/>
+																	<ScoreDistribution value="0" recordCount="6"/>
+																	<ScoreDistribution value="1" recordCount="2"/>
+																</Node>
+																<Node score="0" recordCount="24">
+																	<SimplePredicate field="double(Day Mins)" operator="lessOrEqual" value="127.04999923706055"/>
+																	<ScoreDistribution value="0" recordCount="24"/>
+																	<ScoreDistribution value="1" recordCount="0"/>
+																</Node>
+																<Node score="0" recordCount="6">
+																	<True/>
+																	<ScoreDistribution value="0" recordCount="5"/>
+																	<ScoreDistribution value="1" recordCount="1"/>
+																</Node>
+															</Node>
+															<Node score="0" recordCount="12">
+																<SimplePredicate field="double(Eve Calls)" operator="lessOrEqual" value="98.5"/>
+																<ScoreDistribution value="0" recordCount="12"/>
+																<ScoreDistribution value="1" recordCount="0"/>
+															</Node>
+															<Node score="0" recordCount="8">
+																<True/>
+																<ScoreDistribution value="0" recordCount="5"/>
+																<ScoreDistribution value="1" recordCount="3"/>
+															</Node>
+														</Node>
+														<Node score="0" recordCount="10">
+															<True/>
+															<ScoreDistribution value="0" recordCount="8"/>
+															<ScoreDistribution value="1" recordCount="2"/>
+														</Node>
+													</Node>
+													<Node>
+														<SimplePredicate field="double(Day Calls)" operator="lessOrEqual" value="63.5"/>
+														<Node score="0" recordCount="14">
+															<SimplePredicate field="double(Eve Mins)" operator="lessOrEqual" value="250.79999542236328"/>
+															<ScoreDistribution value="0" recordCount="14"/>
+															<ScoreDistribution value="1" recordCount="0"/>
+														</Node>
+														<Node score="0" recordCount="6">
+															<True/>
+															<ScoreDistribution value="0" recordCount="4"/>
+															<ScoreDistribution value="1" recordCount="2"/>
+														</Node>
+													</Node>
+													<Node>
+														<SimplePredicate field="double(Day Charge)" operator="lessOrEqual" value="34.204999923706055"/>
+														<Node>
+															<SimplePredicate field="double(Eve Calls)" operator="lessOrEqual" value="69.0"/>
+															<Node score="0" recordCount="12">
+																<SimplePredicate field="double(Eve Charge)" operator="lessOrEqual" value="19.25"/>
+																<ScoreDistribution value="0" recordCount="12"/>
+																<ScoreDistribution value="1" recordCount="0"/>
+															</Node>
+															<Node score="0" recordCount="7">
+																<True/>
+																<ScoreDistribution value="0" recordCount="6"/>
+																<ScoreDistribution value="1" recordCount="1"/>
+															</Node>
+														</Node>
+														<Node>
+															<SimplePredicate field="double(Eve Calls)" operator="lessOrEqual" value="94.5"/>
+															<Node>
+																<SimplePredicate field="double(Eve Calls)" operator="lessOrEqual" value="93.5"/>
+																<Node score="0" recordCount="111">
+																	<SimplePredicate field="double(Intl Calls)" operator="lessOrEqual" value="6.5"/>
+																	<ScoreDistribution value="0" recordCount="111"/>
+																	<ScoreDistribution value="1" recordCount="0"/>
+																</Node>
+																<Node score="0" recordCount="6">
+																	<SimplePredicate field="double(Day Calls)" operator="lessOrEqual" value="87.5"/>
+																	<ScoreDistribution value="0" recordCount="5"/>
+																	<ScoreDistribution value="1" recordCount="1"/>
+																</Node>
+																<Node score="0" recordCount="12">
+																	<True/>
+																	<ScoreDistribution value="0" recordCount="12"/>
+																	<ScoreDistribution value="1" recordCount="0"/>
+																</Node>
+															</Node>
+															<Node score="0" recordCount="10">
+																<True/>
+																<ScoreDistribution value="0" recordCount="9"/>
+																<ScoreDistribution value="1" recordCount="1"/>
+															</Node>
+														</Node>
+														<Node score="0" recordCount="216">
+															<True/>
+															<ScoreDistribution value="0" recordCount="216"/>
+															<ScoreDistribution value="1" recordCount="0"/>
+														</Node>
+													</Node>
+													<Node score="0" recordCount="6">
+														<SimplePredicate field="double(Day Charge)" operator="lessOrEqual" value="34.385000228881836"/>
+														<ScoreDistribution value="0" recordCount="4"/>
+														<ScoreDistribution value="1" recordCount="2"/>
+													</Node>
+													<Node score="0" recordCount="48">
+														<True/>
+														<ScoreDistribution value="0" recordCount="48"/>
+														<ScoreDistribution value="1" recordCount="0"/>
+													</Node>
+												</Node>
+												<Node>
+													<SimplePredicate field="double(Account Length)" operator="lessOrEqual" value="162.5"/>
+													<Node>
+														<SimplePredicate field="double(Intl Mins)" operator="lessOrEqual" value="10.849999904632568"/>
+														<Node score="0" recordCount="8">
+															<SimplePredicate field="double(Intl Charge)" operator="lessOrEqual" value="2.3600000143051147"/>
+															<ScoreDistribution value="0" recordCount="8"/>
+															<ScoreDistribution value="1" recordCount="0"/>
+														</Node>
+														<Node score="1" recordCount="8">
+															<True/>
+															<ScoreDistribution value="0" recordCount="3"/>
+															<ScoreDistribution value="1" recordCount="5"/>
+														</Node>
+													</Node>
+													<Node score="0" recordCount="10">
+														<True/>
+														<ScoreDistribution value="0" recordCount="10"/>
+														<ScoreDistribution value="1" recordCount="0"/>
+													</Node>
+												</Node>
+												<Node score="0" recordCount="6">
+													<SimplePredicate field="double(Day Mins)" operator="lessOrEqual" value="108.85000228881836"/>
+													<ScoreDistribution value="0" recordCount="5"/>
+													<ScoreDistribution value="1" recordCount="1"/>
+												</Node>
+												<Node score="0" recordCount="33">
+													<True/>
+													<ScoreDistribution value="0" recordCount="33"/>
+													<ScoreDistribution value="1" recordCount="0"/>
+												</Node>
+											</Node>
+											<Node score="0" recordCount="6">
+												<True/>
+												<ScoreDistribution value="0" recordCount="5"/>
+												<ScoreDistribution value="1" recordCount="1"/>
+											</Node>
+										</Node>
+										<Node score="0" recordCount="6">
+											<True/>
+											<ScoreDistribution value="0" recordCount="5"/>
+											<ScoreDistribution value="1" recordCount="1"/>
+										</Node>
+									</Node>
+									<Node score="0" recordCount="11">
+										<True/>
+										<ScoreDistribution value="0" recordCount="9"/>
+										<ScoreDistribution value="1" recordCount="2"/>
+									</Node>
+								</Node>
+								<Node>
+									<SimplePredicate field="double(Eve Charge)" operator="lessOrEqual" value="23.484999656677246"/>
+									<Node>
+										<SimplePredicate field="double(Day Mins)" operator="lessOrEqual" value="213.9499969482422"/>
+										<Node>
+											<SimplePredicate field="double(Eve Mins)" operator="lessOrEqual" value="243.9499969482422"/>
+											<Node score="0" recordCount="17">
+												<SimplePredicate field="double(Day Mins)" operator="lessOrEqual" value="212.0500030517578"/>
+												<ScoreDistribution value="0" recordCount="17"/>
+												<ScoreDistribution value="1" recordCount="0"/>
+											</Node>
+											<Node score="0" recordCount="11">
+												<SimplePredicate field="double(Day Charge)" operator="lessOrEqual" value="36.21999931335449"/>
+												<ScoreDistribution value="0" recordCount="8"/>
+												<ScoreDistribution value="1" recordCount="3"/>
+											</Node>
+											<Node score="0" recordCount="10">
+												<True/>
+												<ScoreDistribution value="0" recordCount="10"/>
+												<ScoreDistribution value="1" recordCount="0"/>
+											</Node>
+										</Node>
+										<Node score="0" recordCount="6">
+											<True/>
+											<ScoreDistribution value="0" recordCount="4"/>
+											<ScoreDistribution value="1" recordCount="2"/>
+										</Node>
+									</Node>
+									<Node score="0" recordCount="7">
+										<SimplePredicate field="double(Intl Charge)" operator="lessOrEqual" value="1.2700000405311584"/>
+										<ScoreDistribution value="0" recordCount="6"/>
+										<ScoreDistribution value="1" recordCount="1"/>
+									</Node>
+									<Node score="0" recordCount="117">
+										<SimplePredicate field="double(Night Charge)" operator="lessOrEqual" value="12.4399995803833"/>
+										<ScoreDistribution value="0" recordCount="117"/>
+										<ScoreDistribution value="1" recordCount="0"/>
+									</Node>
+									<Node score="0" recordCount="10">
+										<True/>
+										<ScoreDistribution value="0" recordCount="9"/>
+										<ScoreDistribution value="1" recordCount="1"/>
+									</Node>
+								</Node>
+								<Node score="0" recordCount="10">
+									<True/>
+									<ScoreDistribution value="0" recordCount="6"/>
+									<ScoreDistribution value="1" recordCount="4"/>
+								</Node>
+							</Node>
+							<Node score="0" recordCount="11">
+								<True/>
+								<ScoreDistribution value="0" recordCount="9"/>
+								<ScoreDistribution value="1" recordCount="2"/>
+							</Node>
+						</Node>
+						<Node>
+							<SimplePredicate field="double(Eve Mins)" operator="lessOrEqual" value="266.6999969482422"/>
+							<Node>
+								<SimplePredicate field="double(Eve Mins)" operator="lessOrEqual" value="205.5999984741211"/>
+								<Node>
+									<SimplePredicate field="double(Intl Mins)" operator="lessOrEqual" value="15.25"/>
+									<Node>
+										<SimplePredicate field="double(Day Mins)" operator="lessOrEqual" value="227.04999542236328"/>
+										<Node score="0" recordCount="6">
+											<SimplePredicate field="double(Eve Calls)" operator="lessOrEqual" value="106.5"/>
+											<ScoreDistribution value="0" recordCount="4"/>
+											<ScoreDistribution value="1" recordCount="2"/>
+										</Node>
+										<Node score="0" recordCount="9">
+											<True/>
+											<ScoreDistribution value="0" recordCount="8"/>
+											<ScoreDistribution value="1" recordCount="1"/>
+										</Node>
+									</Node>
+									<Node>
+										<SimplePredicate field="double(Night Mins)" operator="lessOrEqual" value="291.3000030517578"/>
+										<Node>
+											<SimplePredicate field="double(Intl Calls)" operator="lessOrEqual" value="2.5"/>
+											<Node>
+												<SimplePredicate field="double(Day Charge)" operator="lessOrEqual" value="40.869998931884766"/>
+												<Node score="0" recordCount="6">
+													<SimplePredicate field="double(Eve Mins)" operator="lessOrEqual" value="175.4000015258789"/>
+													<ScoreDistribution value="0" recordCount="4"/>
+													<ScoreDistribution value="1" recordCount="2"/>
+												</Node>
+												<Node score="0" recordCount="9">
+													<True/>
+													<ScoreDistribution value="0" recordCount="9"/>
+													<ScoreDistribution value="1" recordCount="0"/>
+												</Node>
+											</Node>
+											<Node score="0" recordCount="17">
+												<True/>
+												<ScoreDistribution value="0" recordCount="17"/>
+												<ScoreDistribution value="1" recordCount="0"/>
+											</Node>
+										</Node>
+										<Node score="0" recordCount="108">
+											<True/>
+											<ScoreDistribution value="0" recordCount="108"/>
+											<ScoreDistribution value="1" recordCount="0"/>
+										</Node>
+									</Node>
+									<Node score="0" recordCount="9">
+										<True/>
+										<ScoreDistribution value="0" recordCount="7"/>
+										<ScoreDistribution value="1" recordCount="2"/>
+									</Node>
+								</Node>
+								<Node score="0" recordCount="7">
+									<True/>
+									<ScoreDistribution value="0" recordCount="5"/>
+									<ScoreDistribution value="1" recordCount="2"/>
+								</Node>
+							</Node>
+							<Node>
+								<SimplePredicate field="double(Day Charge)" operator="lessOrEqual" value="41.665000915527344"/>
+								<Node>
+									<SimplePredicate field="double(Night Calls)" operator="lessOrEqual" value="92.5"/>
+									<Node>
+										<SimplePredicate field="double(Day Charge)" operator="lessOrEqual" value="40.625"/>
+										<Node score="0" recordCount="13">
+											<SimplePredicate field="double(Eve Calls)" operator="lessOrEqual" value="101.5"/>
+											<ScoreDistribution value="0" recordCount="13"/>
+											<ScoreDistribution value="1" recordCount="0"/>
+										</Node>
+										<Node score="0" recordCount="6">
+											<True/>
+											<ScoreDistribution value="0" recordCount="5"/>
+											<ScoreDistribution value="1" recordCount="1"/>
+										</Node>
+									</Node>
+									<Node score="0" recordCount="7">
+										<True/>
+										<ScoreDistribution value="0" recordCount="4"/>
+										<ScoreDistribution value="1" recordCount="3"/>
+									</Node>
+								</Node>
+								<Node score="0" recordCount="36">
+									<True/>
+									<ScoreDistribution value="0" recordCount="36"/>
+									<ScoreDistribution value="1" recordCount="0"/>
+								</Node>
+							</Node>
+							<Node>
+								<SimplePredicate field="double(Night Mins)" operator="lessOrEqual" value="216.75"/>
+								<Node score="0" recordCount="6">
+									<SimplePredicate field="double(Account Length)" operator="lessOrEqual" value="81.0"/>
+									<ScoreDistribution value="0" recordCount="3"/>
+									<ScoreDistribution value="1" recordCount="3"/>
+								</Node>
+								<Node score="0" recordCount="11">
+									<SimplePredicate field="double(Eve Calls)" operator="lessOrEqual" value="114.0"/>
+									<ScoreDistribution value="0" recordCount="11"/>
+									<ScoreDistribution value="1" recordCount="0"/>
+								</Node>
+								<Node score="0" recordCount="6">
+									<True/>
+									<ScoreDistribution value="0" recordCount="5"/>
+									<ScoreDistribution value="1" recordCount="1"/>
+								</Node>
+							</Node>
+							<Node score="1" recordCount="8">
+								<SimplePredicate field="double(Day Mins)" operator="lessOrEqual" value="251.5999984741211"/>
+								<ScoreDistribution value="0" recordCount="3"/>
+								<ScoreDistribution value="1" recordCount="5"/>
+							</Node>
+							<Node score="1" recordCount="6">
+								<True/>
+								<ScoreDistribution value="0" recordCount="0"/>
+								<ScoreDistribution value="1" recordCount="6"/>
+							</Node>
+						</Node>
+						<Node>
+							<SimplePredicate field="double(VMail Plan)" operator="lessOrEqual" value="0.5"/>
+							<Node score="1" recordCount="6">
+								<SimplePredicate field="double(Eve Mins)" operator="lessOrEqual" value="269.4499969482422"/>
+								<ScoreDistribution value="0" recordCount="2"/>
+								<ScoreDistribution value="1" recordCount="4"/>
+							</Node>
+							<Node score="1" recordCount="17">
+								<SimplePredicate field="double(Eve Calls)" operator="lessOrEqual" value="109.5"/>
+								<ScoreDistribution value="0" recordCount="0"/>
+								<ScoreDistribution value="1" recordCount="17"/>
+							</Node>
+							<Node score="1" recordCount="6">
+								<True/>
+								<ScoreDistribution value="0" recordCount="1"/>
+								<ScoreDistribution value="1" recordCount="5"/>
+							</Node>
+						</Node>
+						<Node score="0" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0" recordCount="6"/>
+							<ScoreDistribution value="1" recordCount="0"/>
+						</Node>
+					</Node>
+					<Node>
+						<SimplePredicate field="double(Intl Charge)" operator="lessOrEqual" value="3.534999966621399"/>
+						<Node score="1" recordCount="34">
+							<SimplePredicate field="double(Intl Calls)" operator="lessOrEqual" value="2.5"/>
+							<ScoreDistribution value="0" recordCount="0"/>
+							<ScoreDistribution value="1" recordCount="34"/>
+						</Node>
+						<Node>
+							<SimplePredicate field="double(Day Mins)" operator="lessOrEqual" value="251.9000015258789"/>
+							<Node score="0" recordCount="125">
+								<SimplePredicate field="double(Eve Charge)" operator="lessOrEqual" value="26.34999942779541"/>
+								<ScoreDistribution value="0" recordCount="125"/>
+								<ScoreDistribution value="1" recordCount="0"/>
+							</Node>
+							<Node score="0" recordCount="6">
+								<True/>
+								<ScoreDistribution value="0" recordCount="4"/>
+								<ScoreDistribution value="1" recordCount="2"/>
+							</Node>
+						</Node>
+						<Node score="0" recordCount="10">
+							<True/>
+							<ScoreDistribution value="0" recordCount="6"/>
+							<ScoreDistribution value="1" recordCount="4"/>
+						</Node>
+					</Node>
+					<Node score="1" recordCount="40">
+						<True/>
+						<ScoreDistribution value="0" recordCount="0"/>
+						<ScoreDistribution value="1" recordCount="40"/>
+					</Node>
+				</Node>
+				<Node>
+					<SimplePredicate field="double(Day Charge)" operator="lessOrEqual" value="27.1850004196167"/>
+					<Node>
+						<SimplePredicate field="double(Eve Mins)" operator="lessOrEqual" value="263.8000030517578"/>
+						<Node>
+							<SimplePredicate field="double(Eve Mins)" operator="lessOrEqual" value="232.3499984741211"/>
+							<Node score="1" recordCount="56">
+								<SimplePredicate field="double(Night Mins)" operator="lessOrEqual" value="255.9000015258789"/>
+								<ScoreDistribution value="0" recordCount="0"/>
+								<ScoreDistribution value="1" recordCount="56"/>
+							</Node>
+							<Node score="1" recordCount="6">
+								<True/>
+								<ScoreDistribution value="0" recordCount="1"/>
+								<ScoreDistribution value="1" recordCount="5"/>
+							</Node>
+						</Node>
+						<Node score="0" recordCount="6">
+							<SimplePredicate field="double(Night Calls)" operator="lessOrEqual" value="90.0"/>
+							<ScoreDistribution value="0" recordCount="3"/>
+							<ScoreDistribution value="1" recordCount="3"/>
+						</Node>
+						<Node score="1" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0" recordCount="0"/>
+							<ScoreDistribution value="1" recordCount="6"/>
+						</Node>
+					</Node>
+					<Node score="0" recordCount="7">
+						<True/>
+						<ScoreDistribution value="0" recordCount="5"/>
+						<ScoreDistribution value="1" recordCount="2"/>
+					</Node>
+				</Node>
+				<Node>
+					<SimplePredicate field="double(Eve Mins)" operator="lessOrEqual" value="141.75"/>
+					<Node score="1" recordCount="7">
+						<SimplePredicate field="double(Eve Calls)" operator="lessOrEqual" value="117.5"/>
+						<ScoreDistribution value="0" recordCount="0"/>
+						<ScoreDistribution value="1" recordCount="7"/>
+					</Node>
+					<Node score="1" recordCount="6">
+						<True/>
+						<ScoreDistribution value="0" recordCount="2"/>
+						<ScoreDistribution value="1" recordCount="4"/>
+					</Node>
+				</Node>
+				<Node>
+					<SimplePredicate field="double(Day Mins)" operator="lessOrEqual" value="175.75"/>
+					<Node>
+						<SimplePredicate field="double(Eve Charge)" operator="lessOrEqual" value="18.079999923706055"/>
+						<Node score="1" recordCount="6">
+							<SimplePredicate field="double(Account Length)" operator="lessOrEqual" value="100.5"/>
+							<ScoreDistribution value="0" recordCount="2"/>
+							<ScoreDistribution value="1" recordCount="4"/>
+						</Node>
+						<Node score="1" recordCount="7">
+							<True/>
+							<ScoreDistribution value="0" recordCount="0"/>
+							<ScoreDistribution value="1" recordCount="7"/>
+						</Node>
+					</Node>
+					<Node score="0" recordCount="12">
+						<True/>
+						<ScoreDistribution value="0" recordCount="12"/>
+						<ScoreDistribution value="1" recordCount="0"/>
+					</Node>
+				</Node>
+				<Node>
+					<SimplePredicate field="double(Eve Charge)" operator="lessOrEqual" value="20.554999351501465"/>
+					<Node score="0" recordCount="8">
+						<SimplePredicate field="double(Day Mins)" operator="lessOrEqual" value="188.1500015258789"/>
+						<ScoreDistribution value="0" recordCount="6"/>
+						<ScoreDistribution value="1" recordCount="2"/>
+					</Node>
+					<Node score="0" recordCount="50">
+						<True/>
+						<ScoreDistribution value="0" recordCount="50"/>
+						<ScoreDistribution value="1" recordCount="0"/>
+					</Node>
+				</Node>
+				<Node score="1" recordCount="6">
+					<SimplePredicate field="double(Eve Charge)" operator="lessOrEqual" value="21.77999973297119"/>
+					<ScoreDistribution value="0" recordCount="1"/>
+					<ScoreDistribution value="1" recordCount="5"/>
+				</Node>
+				<Node score="0" recordCount="11">
+					<True/>
+					<ScoreDistribution value="0" recordCount="10"/>
+					<ScoreDistribution value="1" recordCount="1"/>
+				</Node>
+			</Node>
+			<Node>
+				<SimplePredicate field="double(VMail Plan)" operator="lessOrEqual" value="0.5"/>
+				<Node>
+					<SimplePredicate field="double(Eve Charge)" operator="lessOrEqual" value="15.959999561309814"/>
+					<Node>
+						<SimplePredicate field="double(Night Mins)" operator="lessOrEqual" value="213.25"/>
+						<Node>
+							<SimplePredicate field="double(Day Charge)" operator="lessOrEqual" value="51.095001220703125"/>
+							<Node score="0" recordCount="15">
+								<SimplePredicate field="double(Eve Charge)" operator="lessOrEqual" value="15.28499984741211"/>
+								<ScoreDistribution value="0" recordCount="15"/>
+								<ScoreDistribution value="1" recordCount="0"/>
+							</Node>
+							<Node score="0" recordCount="6">
+								<True/>
+								<ScoreDistribution value="0" recordCount="5"/>
+								<ScoreDistribution value="1" recordCount="1"/>
+							</Node>
+						</Node>
+						<Node score="1" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0" recordCount="1"/>
+							<ScoreDistribution value="1" recordCount="5"/>
+						</Node>
+					</Node>
+					<Node score="1" recordCount="9">
+						<SimplePredicate field="double(Night Calls)" operator="lessOrEqual" value="97.5"/>
+						<ScoreDistribution value="0" recordCount="0"/>
+						<ScoreDistribution value="1" recordCount="9"/>
+					</Node>
+					<Node score="1" recordCount="10">
+						<True/>
+						<ScoreDistribution value="0" recordCount="4"/>
+						<ScoreDistribution value="1" recordCount="6"/>
+					</Node>
+				</Node>
+				<Node score="0" recordCount="6">
+					<SimplePredicate field="double(Night Mins)" operator="lessOrEqual" value="126.99999618530273"/>
+					<ScoreDistribution value="0" recordCount="4"/>
+					<ScoreDistribution value="1" recordCount="2"/>
+				</Node>
+				<Node score="1" recordCount="71">
+					<True/>
+					<ScoreDistribution value="0" recordCount="0"/>
+					<ScoreDistribution value="1" recordCount="71"/>
+				</Node>
+			</Node>
+			<Node>
+				<SimplePredicate field="double(Int'l Plan)" operator="lessOrEqual" value="0.5"/>
+				<Node score="0" recordCount="29">
+					<SimplePredicate field="double(Day Mins)" operator="lessOrEqual" value="304.45001220703125"/>
+					<ScoreDistribution value="0" recordCount="29"/>
+					<ScoreDistribution value="1" recordCount="0"/>
+				</Node>
+				<Node score="0" recordCount="6">
+					<True/>
+					<ScoreDistribution value="0" recordCount="5"/>
+					<ScoreDistribution value="1" recordCount="1"/>
+				</Node>
+			</Node>
+			<Node score="1" recordCount="6">
+				<True/>
+				<ScoreDistribution value="0" recordCount="1"/>
+				<ScoreDistribution value="1" recordCount="5"/>
+			</Node>
+		</Node>
+	</TreeModel>
+</PMML>
