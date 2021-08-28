@@ -39,9 +39,9 @@ You may refer to the `results` folder for each of the individual confusion matri
 - The exported deep learning models from KNIME can only be either the **`SavedModel`** format, or the **Keras `.h5` format**. The **`h5`** format can retain all the functionalities associated with the `Keras` framework, such as being able to check all the layers by calling `model.summary()` method. While the `SavedModel` format will have limited functionalities and you would need to extract the model function from the `model.signatures['serve']` key to be able to run inference. Please refer to the last two sections of the `MNIST Digit Classification.ipynb` notebook for the detailed steps.
 
 ## Notes on Machine Learning Models in PMML format
-- You must install the `sklearn-pmml-model` library from [here](https://github.com/iamDecode/sklearn-pmml-model), to load PMML model. 
-- You must also install the `sklearn2pmml` library from [here](https://github.com/jpmml/sklearn2pmml) to create PMML model from `sklearn` library.
-- Both of these libraries are the best solutions that I have found for now, things might and you might need to find other alternatives in the future.
+- You must install the `sklearn-pmml-model` library from [here](https://github.com/iamDecode/sklearn-pmml-model), to load PMML model.
+- You must also install the `sklearn2pmml` library from [here](https://github.com/jpmml/sklearn2pmml) to convert from `sklearn` pipeline to a PMML model.
+- Both of these libraries are the best solutions that I have found for now, things might change and you might need to find other alternatives in the future.
 - For the detailed steps of how to load and export PMML model, please refer to the `Decision Tree Comparison.ipynb` notebook.
 - Be careful that KNIME might use different model parameters/implementations from `sklearn` models and many parameters cannot be changed easily in `sklearn` to follow the parameters used by KNIME.
 - The `Decision Tree Learner` application used in KNIME also automatically encodes the nominal/categorical columns and I couldn't find any reference on how exactly they encode them. Therefore, in the experiment done in this repo, I used `OrdinalEncoder` to encode the columns before I use the KNIME's Decision Tree Model to make inference, but the performance result was slightly different.
