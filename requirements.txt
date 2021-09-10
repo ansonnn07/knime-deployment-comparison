@@ -1,6 +1,6 @@
 openpyxl
 pandas
-numpy
+numpy==1.19.3
 seaborn
 scikit-learn
 sklearn2pmml
